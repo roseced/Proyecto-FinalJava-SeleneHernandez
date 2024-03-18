@@ -1,21 +1,28 @@
-class Dato{
-    constructor(descripcion, valor){
-        this._descripcion = descripcion;
-        this._valor = valor;
+export default class Dato { 
+    constructor (descripcion,valor) {
+       this._descripcion=descripcion;
+        this._valor=valor;
     }
-
-    get descripcion(){
+   
+    get descripcion() {
         return this._descripcion;
     }
-    set descripcion(nuevaDescripcion){
-        this._descripcion = nuevaDescripcion;
+    set descripcion(nuevaDescripcion ) {
+        if (typeof nuevaDescripcion ===string) {
+            this._descripcion=nuevaDescripcion;
+        } else { 
+            console.error("Error: La descripcion debe ser un valor de tipo String");
+        }
     }
-    get valor(){
-        return this.valor;
+    
+    get valor() {
+        return this._valor;
     }
-    set valor(nuevoValor){
-
+    set valor(nuevoValor) {
+        if (typeof nuevoValor === number&&  nuevoValor >=0 ) {
+            return this._valor=nuevoValor;
+        } else {
+            console.error("Error: El valor debe ser un número positivo.");
+        } 
     }
 }
-
-export default Dato;
